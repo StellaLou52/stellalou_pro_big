@@ -13,13 +13,13 @@ $.ajaxPrefilter(function(options){
         
     }
     // 全局统一挂载complete回调函数
-    // options.complete = function(res){
-    //         // 这个可以通过返回值responseJSON 来判断 ，如果符合要求，则强制退出清空token的值，而且要强制退出index页面，返回login页面
-    //         if (res.responseJSON.status == 1 && res.responseJSON.message == '身份认证失败！' ) {
-    //             localStorage.removeItem('token')
-    //             location.href = './login.html'
-    //         }
+    options.complete = function(res){
+            // 这个可以通过返回值responseJSON 来判断 ，如果符合要求，则强制退出清空token的值，而且要强制退出index页面，返回login页面
+            if (res.responseJSON.status == 1 && res.responseJSON.message == '身份认证失败！' ) {
+                localStorage.removeItem('token')
+                location.href = './login.html'
+            }
 
-    // }
+    }
    
 })
