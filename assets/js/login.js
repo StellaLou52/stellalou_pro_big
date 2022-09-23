@@ -38,7 +38,7 @@ $(function(){
         e.preventDefault()
         $.ajax({
             method:'POST',
-            url:`${url}/api/reguser`,
+            url:'/api/reguser',
             data:{username,password},
             success:function(res){
                 if (res.status !== 0) {
@@ -59,13 +59,14 @@ $(function(){
         console.log(data);
         $.ajax({
             method:'POST',
-            url:`${url}/api/login`,
+            url:'/api/login',
             data:data,
             success:function(res){
                 if (res.status !== 0) {
                     return layer.msg('登陆失败')
                 }
                layer.msg('登陆成功')
+               console.log(res);
 
             //    将登陆成功得到的token字符串，保存到本地存储
              localStorage.setItem('token',res.token)
